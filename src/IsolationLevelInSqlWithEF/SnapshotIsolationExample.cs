@@ -10,7 +10,12 @@ public static class SnapshotIsolationExample
     {
         using var testDbContext = new TestDbContext();
         var entityId = await testDbContext.TestEntities.Select(e => e.Id).FirstAsync();
-        Console.WriteLine("Demonstrating Snapshot Isolation:");
+        
+        Console.WriteLine("Demonstrating SNAPSHOT ISOLATION");
+        Console.WriteLine("Note that this level prevents dirty reads, non-repeatable reads and phantom reads, but does not lock the data for other transactions to read or write. Instead it uses row versioning.");
+        Console.WriteLine("Take a look that other transaction's inserts and updates execute immediately, without waiting for transaction in flight to finish.");
+        Console.WriteLine();
+
         var readSnapshotData = ReadSnapshotDataAsync(entityId);
         await Task.Delay(1000);
         var updateWithCommit = UpdateEntityWithCommitAsync(entityId);

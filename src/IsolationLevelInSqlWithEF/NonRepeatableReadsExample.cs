@@ -59,7 +59,7 @@ public static class NonRepeatableReadsExample
     private static async Task ReadRepeatableDataAsync(Guid entityId)
     {
         using var testDbContext = new TestDbContext();
-        // default level is IsolationLevel.ReadCommitted, unless database setting is different
+
         using var transactionToRead = await testDbContext.Database.BeginTransactionAsync(IsolationLevel.RepeatableRead);
         var entityNameToReadFirstTime = await testDbContext.TestEntities.Where(e => e.Id == entityId).Select(e => e.Name).FirstAsync();
         Console.WriteLine($"Entity Name (First Read): {entityNameToReadFirstTime}");

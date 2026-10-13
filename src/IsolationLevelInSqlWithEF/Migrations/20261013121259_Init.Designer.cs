@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace SqlServerExamplesWithEF.Migrations
+namespace IsolationLevelInSqlWithEF.Migrations
 {
     [DbContext(typeof(TestDbContext))]
     [Migration("20261013121259_Init")]
